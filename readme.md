@@ -1,0 +1,1 @@
+Some notes taken when learning python for reference
