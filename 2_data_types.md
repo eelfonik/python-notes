@@ -1,3 +1,5 @@
+## Data types
+
 ### string:
 
 Strings in Python are **immutable**, which means that once a string is created, it cannot be changed.
@@ -29,6 +31,8 @@ movies = [
 "The Holy Grail", 1975, "Terry Jones & Terry Gilliam", 91,
 	["Graham Chapman",
 		["Michael Palin", "John Cleese", "Terry Gilliam", "Eric Idle", "Terry Jones"]]]
+
+# access list data using index
 print(movies[4][1][0])
 
 # "Michael Palin"
@@ -45,10 +49,18 @@ movies[0:3]
 
 #### list comprehension
 
-Creating a new list by specifying the **transformation** that is to be applied to each of the data items within an existing list. 完全就是fp的套路
+Creating a **new list** by specifying the **transformation** that is to be applied to **each of** the data items within an **existing list**. 完全就是fp的套路
+
+In the codes below: 
+
+- *new list* is `new_movies`
+- *tranformation function* is `item.replace('e', '')`
+- *each items* is named `item`
+- *existing list* is `movies`
 
 ```python
 movies = ['black orange', 'herzog', 'a list apart']
+
 new_movies = [item.replace('e', '') for item in movies]
 print(new_movies)
 
@@ -80,7 +92,7 @@ clean
 
 ### set:
 
-Several ways to create a new set:
+_Several ways to create a new set_:
 
 - create a set use factory BIF `set()` => `distance = set()`
 - or directly populate a set using some data items => `distance = {10.6, 11, 8, 10.6, 'two', 7}`
@@ -96,4 +108,30 @@ Several ways to create a new set:
 **Important Note:** the data items in a set are **unordered** and **duplicates are not allowed**. If you try to add a data item to a set that already contains the data item, Python simply *ignores* it.
 
 
+### dictionary:
 
+_Several ways to create a new dict_:
+
+- factory BIF `dict()` => `clees = dict()`
+- using curly braces => `clees = {'Name': 'kino', 'Age': 'unknown', 'Life': ['outer space', 'coding', 'sleep']}`
+
+	**N.B.** the tricky part is, when using curly braces to create a variable, if the data is *empty* or *structured using `key: value`* (see above) , the type is `dict`, and when the data is just *a list of items*, it becomes `set`.
+	
+_Accessing data inside dict:_
+
+```python
+clees['Name']
+# 'kino'
+
+clees['Life'][-1]
+# 'sleep'
+```
+
+_Add new items to a dict:_
+
+```python
+clees['Stop'] = "why, so, hard"
+clees
+# {'Name': 'kino', 'Age': 'unknown', 'Stop': 'why, so, hard', 'Life': ['outer space', 'coding', 'sleep']}
+```
+**N.B.** the added item **does not maintain insertion order**, the dictionary maintains the *associations*, not the *ordering*.

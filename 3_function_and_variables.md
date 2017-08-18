@@ -20,8 +20,13 @@ def print_items(item_list):
 
 print_items(movies)
 ```
+#### Comments in python
 
-*N.B.* Use `"""bla bla bla"""` or `'''bla bla bla'''` or `# bla bla bal` to add comment to py code
+2 way to add comments:
+
+- `"""bla bla bla"""` or `'''bla bla bla'''` for multiple lines of comments, and can also be used to add *doctring* to any function, methond, class, etc.
+
+- `# bla bla bla` to add one line comment. This is useful when you want to quickly switch on/off some lines of codes to test sth. 
 
 #### optional arguments
 

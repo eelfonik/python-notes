@@ -1,3 +1,5 @@
+## BIFs
+
 - `range()` => Returns an iterator that generates numbers in a specified range on demand and as needed. 
 
 - `isinstance(identifier, type)` =>
@@ -17,7 +19,12 @@
 
 	get length 
 
-	`print(len(movies))` // 3
+	```python
+	movies = ['a','b','c']
+	print(len(movies))
+	
+	# 3
+	```
 	
 - `append()` => 
 
@@ -26,18 +33,20 @@
 	```python
 	movies.append("d")
 	print(movies)
+	
+	# ["a", "b", "c", "d"]
 	``` 
-	// `["a", "b", "c", "d"]`
 	
 - `pop()` => 
 
-	remove item at the end 
+	remove item at specific index, default to the last item 
 
 	```python
 	movies.pop() // "d"
 	print(movies)
+	
+	# ["a", "b", "c"]
 	```
-	// `["a", "b", "c"]`
 	
 - `extend()` =>
 
@@ -46,8 +55,9 @@
 	```python
 	movies.extend(["d", "e", "f"])
 	print(movies)
+	
+	# ["a", "b", "c", "d", "e", "f"]
 	```
-	// `["a", "b", "c", "d", "e", "f"]`
 	
 - `remove()` =>
 
@@ -56,9 +66,10 @@
 	```python
 	movies.remove("b")
 	print(movies)
-	```
-	// `["a", "c", "d", "e", "f"]`
 	
+	# ["a", "c", "d", "e", "f"]
+	```
+		
 - `insert()` =>
 
 	insert item at a *specific slot* 
@@ -66,8 +77,9 @@
 	```python
 	movies.insert(1, "bla")
 	print(movies)
+	
+	# ["a", "bla", "c", "d", "e", "f"]
 	```
-	// `["a", "bla", "c", "d", "e", "f"]`
 	
 - `sort()` => 'in-place' sort a list, will **replace** the original list
 
@@ -88,21 +100,22 @@
 	```python
 	for movie in movies:
 		print(movie)
+		
+	# "a", "bla", "c", "d", "e", "f"
 	```
-	// "a", "bla", "c", "d", "e", "f"
-	
-> 	*A note to myself*: in javascript there's a `for` method which I merely use, as it's not quite functional style -_- (normally use `map`, `reduce`, or `forEach`).
+		
+> *A note to myself*: in javascript there's a `for` method which I merely use, as it's not quite functional style -_- (normally use `map`, `reduce`, or `forEach`).
 > 	
-> 	to compare(note the `;`, `let` and different syntax):
+> to compare(note the `;`, `let` and different syntax):
 > 	
-> 	```javascript
-> 	const movies = ["a", "b", "c"];
-> 	for (let movie in movies) {
-> 		console.log(movie);
-> 	}
-> 	// would normally do:
-> 	movies.forEach(m => {console.log(m)});
-> 	```
+> ```javascript
+> const movies = ["a", "b", "c"];
+> for (let movie in movies) {
+> 	console.log(movie);
+> }
+> // would normally do:
+> movies.forEach(m => {console.log(m)});
+> ```
 	
 - `while` loop =>
 
@@ -128,4 +141,4 @@
 
 #####  factory function:
 - `set()` => create a new set
-
+- `dict()` => create a new dictionary
