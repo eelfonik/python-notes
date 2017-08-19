@@ -78,3 +78,11 @@ a.get_values_len()
 ```
 
 **TODO: we can also inherit from multiple built-in data structures.**
+
+**Note:** favour *composition* over *inheritance*
+
+
+### Decorator
+
+- `@staticmethod`
+- `@property` => @property decorator allows *a class method* to appear like an *attribute* to users of the class. So instead of calling `.somemethod()`, you should just use `.somemethod`, this is useful when the method is not changing the object's data but just *convert the attributes*.

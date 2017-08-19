@@ -25,4 +25,23 @@
 	```
 	
 	**N.B.** as `pickle` is using a python specific protocol to process files, it may make the output files (especially the text files) looks weird on other program, it really shines when you load some previously pickled data into another program.
+	
+- `string` => has sth like `string.Template`
+- `http.server` used to spin up a simple web server =>
+
+	```python
+	from http.server import HTTPServer, CGIHTTPRequestHandler
+	port = 8080
+	httpd = HTTPServer(('', port), CGIHTTPRequestHandler)
+	print("Starting simple_httpd on port: " + str(httpd.server_port))
+	httpd.serve_forever()
+	```
+- `glob` => `glob.glob('data/*.txt')` create a list of filenames inside a directory
+	
+- `cgi` => read data from web server `cgi.FieldStorage()`
+- `cgitb` => send the *standard errors* to browser `cgitb.enable()`
+- `json` => to handle json format
+
+	- `json.dumps()` => create a stringed version of a Python type
+	- `json.loads()` => create a Python type from a JSON string
 
