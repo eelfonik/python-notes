@@ -135,3 +135,15 @@ clees
 # {'Name': 'kino', 'Age': 'unknown', 'Stop': 'why, so, hard', 'Life': ['outer space', 'coding', 'sleep']}
 ```
 **N.B.** the added item **does not maintain insertion order**, the dictionary maintains the *associations*, not the *ordering*.
+
+#### dict comprehension (of course)
+
+It takes the form `{key: value for value in iterable}`
+
+```python
+movies = ['black orange', 'herzog', 'a list apart']
+new_movies_dict = { movies.index(item): item for item in movies }
+print(new_movies_dict)
+
+# {0: 'black orange', 1: 'herzog', 2: 'a list apart'}
+```

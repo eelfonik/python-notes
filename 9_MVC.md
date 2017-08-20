@@ -1,21 +1,45 @@
-## MVC on backend
+## MVC on both ends
 
-- Model
+**M**odels **V**iew and **C**ontroller
 
-Data storage & processing code
+-
+**Models** is basically some files define the data structures??? => yes, Data storage & processing code. 
 
-- View
+on _backend_ it's define the **schema & structure** inside the database
 
-format & display user interface => which would interestingly become the front-end's **Model** layer :)
+on _Frontend_, it's define the **shape of state in store** actually.
 
-- Controller
+##### Redux on server to better get data from server to fill initialState on client side
+See [this video tutorial](https://egghead.io/lessons/javascript-redux-normalizing-the-state-shape)
 
-glue your webapp together and provide its business logic (can be really fat)
+-
+
+**View** used to format & display user interface.
+
+_As the MVC pattern can be applied **both** on client side or server side._
+
+The *View layer of server side* can actually be the *Model layer of client side* :)
+
+-
+
+**Controller** glue your webapp together and provide its business logic (can be really fat). Normally it's how we manipulate the **data**.
+
+On _backend_, it can interact with database, as do **query(find)** from database or **save** to database or **delete(drop)** from database, and return some callback functions accroding to the results it gets, so it's basically defined the **functions** to manipulate the database.
+
+On _Frontend_, We can call them **actions** & **reducers**.
+
+*Question*: _is controller where we designed our RESTful API?_
+
+-
+
+**Some side note on server router**: this is where the API endpoints are defined (like '/signin'), and framework like **Express** provides the common methods like *post*, *get*, *delete*, etc, to accept client requests, then send response using the **functions** defined by **controller**.
+
+*Question*: router should be something to navigate from one point to another inside apps no? Why it feels like API endpoint?????
 
 
-
+-
 ### web development
-Instead of generating html template, we could prepare some Restful APIs in the **view** layer of the backend.
+Instead of generating html template, we could prepare some Restful APIs in the **view** layer of the backend... but let's see how web used to work :)
 
 This dynamic content generation process has been standardized since the early days of the Web and is known as the **Common Gateway Interface (CGI)**. Programs that conform to the standard are often referred to as *CGI scripts*.
 
@@ -45,6 +69,41 @@ The web server will capture the `stdout` of the CGI script, and ignore the `stde
 
 
 ### database
-avoid race condition
+Avoid race condition
 
-python3 is packed with a SQLite...
+python3 is packed with a SQLite... & a `sqlite3` standard lib
+
+#### Python Database API
+
+![image](https://www.dropbox.com/s/r3msahv780gklvf/Screen%20Shot%202017-08-19%20at%202.27.41%20AM.png?raw=1)
+
+```python
+import sqlite3connection = sqlite3.connect('test.sqlite')
+cursor = connection.cursor()
+cursor.execute("""SELECT DATE('NOW')""")
+connection.commit()
+# or connection.rollback()connection.close()
+```
+
+##### _database design_
+
+Define your schema and create some tables (sql) 
+
+_for nosql database like `mongodb`, see the section below_.
+
+
+
+
+-
+
+### Back to the free-tracker app I build
+##### Question about session cookie and localStorage:
+What's the relationship with `connect sid` inside cookie (set by express session) & the state inside `localStorage` (set by redux)? I tried to keep them on sync in code, but since you can modify `localStorage` directly from dev tool, it should not be trusted hence should not be used to decide which page to show?
+##### Mongodb data modeling
+[officiel doc](https://docs.mongodb.com/manual/core/data-modeling-introduction/)
+
+[Intro to 1-N data design](http://blog.mongodb.org/post/87200945828/6-rules-of-thumb-for-mongodb-schema-design-part-1)
+
+So for the `userInfo` that will needed for every invoice, I embeded it directly inside `user`, since it's a 1-1 relationship (But as I need to get that info for every invoice, would it be slower to query?) 
+
+

@@ -2,9 +2,12 @@
 ### module and import
 
 1. create a file called `something.py`, where has `def some_func`
-2. then in any other py file in the **same directory**, or python shell with **cwd** as the **root directory** of the file to import, you can use `from something import some_func`.
+2. then in any other py file in the **same directory**, or python shell with **cwd (current working directory)** as the **root directory** of the file to import, you can use `from something import some_func`.
 
-**TODO: Should find more about how import works**
+3. or for better, if you have a directory like `lib/abc.py`, just keep a empty `__init__.py` file in `lib` folder, and then use `from lib.abc import <Your Module name>`.
+Keep `__init__.py` file in every folder of hierarchy of import module.
+
+More discussion on stackoverflow [here](https://stackoverflow.com/questions/279237/import-a-module-from-a-relative-path).
 
 
 ### Prepare a module to upload & publish
