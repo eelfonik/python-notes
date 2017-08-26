@@ -53,6 +53,9 @@ Assume we have imported the numpy lib as `np`
 	
 	If for any reason that your data is a rank 1 array, you can always use `reshape` to make it the right shape.
 	
+	And always remember to add assertions.
+	
+-
 	
 #### Simple example of binary classification using sigmoid function & a convex function as Loss function (which means it has only one local optima to make things simpler)
 
@@ -213,7 +216,7 @@ def relu(z):
     s -- relu(z)
     """
     
-    s = max(0,z) 
+    s = np.maximum(0,z) 
     
     return s
     
@@ -231,7 +234,7 @@ def leaky_relu(z):
     s -- leaky relu(z)
     """
     
-    s = max(0.01*z, z) 
+    s = np.maximum(0.01*z, z) 
     
     return s
 
@@ -488,6 +491,7 @@ So use `W = np.random.randn((n,m)) * 0.01`, but it's ok to init `B = np.zeros((n
 
 **N.B.** 这里`W`需要乘上`0.01`是因为我们不希望W的值太大，否则经过activition Fn（特别是sigmoid和tanh这类的Fn）计算出的A的值会过大或过小，导致直接落在非常平缓的两端曲线上，会影响gradient decent的计算效率。如果是一个deep network，我们可能会用其他的constant,而不是`0.01`， 但都不会太大。
 
+-
 
 #### Logistic regression did not work well on the "flower dataset".
 
@@ -534,6 +538,18 @@ def initialize_parameters(n_x, n_h, n_y):
     b1 = np.zeros((n_h, 1))
     W2 = np.random.randn(n_y, n_h)*0.01
     b2 = np.zeros((n_y, 1))
+    
+    # if we have multiple hidden layers (i)
+    # we chould add n_h_1, n_h_2,...n_h_i, etc, then
+    # Wi = np.random.randn(n_h_i, n_h_i-1) * 0.01
+    # bi = np.zeros((n_h_i, 1))
+    
+    # EX:
+    # layer_dims = [2, 4, 5, 6, 7]
+    # for l in range(1, len(layer_dims)):
+    #   parameters['W' + str(l)] = np.random.randn(layer_dims[l], layer_dims[l-1])*0.01
+    #   parameters['b' + str(l)] = np.zeros((layer_dims[l], 1))
+    
     
     assert (W1.shape == (n_h, n_x))
     assert (b1.shape == (n_h, 1))
@@ -635,7 +651,7 @@ def backward_propagation(parameters, cache, X, Y):
     dW2 = np.dot(dZ2, A1.T)/m
     db2 = np.sum(dZ2, axis=1, keepdims = True)/m
     
-    # dZ1 is dA1 * (tanh fn)'
+    # dZ1 is dA1 * (tanh fn)', where dA1 = W2.T * dZ2
     dZ1 = np.dot(W2.T, dZ2) * (1-np.power(A1,2))
     dW1 = np.dot(dZ1, X.T)/m
     db1 = np.sum(dZ1, axis=1, keepdims = True)/m
@@ -759,10 +775,11 @@ print ('Accuracy: %d' % float((np.dot(Y,predictions.T) + np.dot(1-Y,1-prediction
 
 ```
 
-Some takeaways:
+##### Some takeaways:
 
 - to set the entries of a matrix X to 0 and 1 based on a threshold you would do: `X_new = (X > threshold)`
 - Additionally, we can try different hidden layer units value, according to the result, we can apply **regularization** to use very large models (such as n_h = 50) without much overfitting.
+- We have also something called **Early stopping**, which is a way to prevent overfitting
 
 ```python
 plt.figure(figsize=(16, 32))
@@ -786,3 +803,28 @@ Accuracy for 20 hidden units: 90.0 %
 Accuracy for 50 hidden units: 90.25 %
 '''
 ```
+
+- _Check dimensions of matrix:_
+	- `W(i) = (n(i), n(i-1))`
+	- `b(i) = (n(i), 1)`
+	- `Z(i) = (n(i), m)`
+
+	Where `i` is referring to the `ith` layer in the network, and `n(i)` referring to the number of nodes in `ith` layer. So given an input `X`, and a true result `Y`:
+	
+	- for the 1st layer, `W1.shape == (n1, X.shape[0])`
+	- for the last output layer, `Wlast.shape == (Y.shape[0], n(last-1))`
+	- **N.B.** here we can see, as `Alast.shape == (Y.shape[0], X.shape[1])`, we must have `Y.shape[1] == X.shape[1] == m`
+	
+	And `m` is the number of training examples.
+	
+-
+#### Benefits of deeper NN:
+
+![img](https://www.dropbox.com/s/siie1lfy35k9kya/Screen%20Shot%202017-08-25%20at%207.40.25%20PM.png?raw=1)
+
+With `log(n)` layers of network, we can reduce the units needed in a single hidden layer, which will be `exp(n)`
+
+For a complete code example for L layers NN, see [here](https://github.com/eelfonik/python-notes/blob/master/deep_learning.py).
+
+
+	
