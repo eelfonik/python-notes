@@ -54,7 +54,9 @@ def initialize_parameters_deep(layer_dims):
     L = len(layer_dims)            # number of layers in the network
     for l in range(1, L):
         parameters['W' + str(l)] = np.random.randn(layer_dims[l], layer_dims[l-1])*0.01
-        # TODO sometimes they use `/ np.sqrt(layer_dims[l-1])` instead of `*0.01`, why??
+        # TODO sometimes they use `* np.sqrt(1./layer_dims[l-1])` instead of `*0.01`, why??
+        # Answer: this is called Xavier Initialization
+        # another choice would be `* np.sqrt(2./layer_dims[l-1])` He Initialization 
         parameters['b' + str(l)] = np.zeros((layer_dims[l], 1))       
         assert(parameters['W' + str(l)].shape == (layer_dims[l], layer_dims[l-1]))
         assert(parameters['b' + str(l)].shape == (layer_dims[l], 1))   
