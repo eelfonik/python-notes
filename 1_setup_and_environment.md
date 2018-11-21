@@ -8,7 +8,7 @@
 
 Detailed doc [here](https://docs.python.org/3/tutorial/venv.html)
 
-- <del>[pyenv](https://github.com/pyenv/pyenv/blob/master/COMMANDS.md) for managing python version. There’s also Anancoda env dedicate to Science calculation & machine learning. Deprecated as of Python 3.6</del>
+- <del>[pyenv](https://github.com/pyenv/pyenv/blob/master/COMMANDS.md) for managing python version. There’s also Anancoda env dedicate to Science calculation & machine learning.</del> Deprecated as of Python 3.6
 
 - <del>[virtualenv](https://github.com/pyenv/pyenv-virtualenv) As it's always a good idea to use a isolated environment for each project, we can use *pyenv-virtualenv* to create an env using a specific python version</del>
 
