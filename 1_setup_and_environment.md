@@ -1,7 +1,16 @@
 ## Version management
-- [pyenv](https://github.com/pyenv/pyenv/blob/master/COMMANDS.md) for managing python version. There’s also Anancoda env dedicate to Science calculation & machine learning.
+- [venv](https://docs.python.org/3/library/venv.html)
+  1. first `brew install python` to install latest python3 version.
 
-- [virtualenv](https://github.com/pyenv/pyenv-virtualenv) As it's always a good idea to use a isolated environment for each project, we can use *pyenv-virtualenv* to create an env using a specific python version
+  2. Then run `python3 -m venv ~/path/to/env` to create directories inside the directory, containing a copy of the Python interpreter, the standard library, and various supporting files.
+
+  3. source to active the env `source ~/path/to/env/bin/activate`
+
+Detailed doc [here](https://docs.python.org/3/tutorial/venv.html)
+
+- <del>[pyenv](https://github.com/pyenv/pyenv/blob/master/COMMANDS.md) for managing python version. There’s also Anancoda env dedicate to Science calculation & machine learning. Deprecated as of Python 3.6</del>
+
+- <del>[virtualenv](https://github.com/pyenv/pyenv-virtualenv) As it's always a good idea to use a isolated environment for each project, we can use *pyenv-virtualenv* to create an env using a specific python version</del>
 
 - [docker](https://docs.docker.com/docker-for-mac/#explore-the-application-and-run-examples) Should be considered using with vitualenv?
 
