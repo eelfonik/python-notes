@@ -5,6 +5,8 @@
   2. Then run `python3 -m venv ~/path/to/env` to create directories inside the directory, containing a copy of the Python interpreter, the standard library, and various supporting files.
 
   3. source to active the env `source ~/path/to/env/bin/activate`
+  
+  4. for VS code intergation, we need to put the venv directory as a sub-directory under project folder, then specify the python runtime by `command + shift + p` => `Select Interpreter`, choose from the dropdown the one with venv specified.
 
 Detailed doc [here](https://docs.python.org/3/tutorial/venv.html)
 
