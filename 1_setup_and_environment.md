@@ -6,7 +6,7 @@
 
   3. source to active the env `source ~/path/to/env/bin/activate`
   
-  4. for VS code intergation, we need to put the venv directory as a sub-directory under project folder, then specify the python runtime by `command + shift + p` => `Select Interpreter`, choose from the dropdown the one with venv specified.
+  4. for VS code intergation, we need to put the venv directory as a sub-directory under project folder, then specify the python runtime by `command + shift + p` => `Select Interpreter`, choose from the dropdown the one with `venv` specified. ![alt text](./assets/python-interpreter-vscode.png)
 
 Detailed doc [here](https://docs.python.org/3/tutorial/venv.html)
 
