@@ -147,3 +147,18 @@ print(new_movies_dict)
 
 # {0: 'black orange', 1: 'herzog', 2: 'a list apart'}
 ```
+
+Or a more general pattern use `{key:value for (key,value) in dictonary.items()}`
+```python
+dict1 = {'a': 3, 'b': 5, 'c': 6}
+new_dict_1 = {k*2:v for (k,v) in dict1.items()}
+#{'aa': 3, 'bb': 5, 'cc': 6}
+new_dict_2 = {k: v*2 for (k,v) in dict1.items()}
+#{'a': 6, 'b': 10, 'c': 12}
+
+for (k, v) in dict1.items():
+  print(k,v)
+# a 3
+# b 5
+# c 6
+```
