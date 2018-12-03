@@ -142,3 +142,5 @@
 #####  factory function:
 - `set()` => create a new set
 - `dict()` => create a new dictionary
+
+#### A complete [list](https://docs.python.org/3.7/library/functions.html) of BIFs 
