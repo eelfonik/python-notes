@@ -8,7 +8,7 @@
 
 	`isinstance(movies, list)` // true
 	
-	**TODO: where is an exhausted list of `type`?**
+	**TODO: where is an exhausted list of `type`?** => we have a built-in package called `collections`, where we can use
 
 - `print(value, sep=' ', end='\n', file=sys.stdout)`
 	
